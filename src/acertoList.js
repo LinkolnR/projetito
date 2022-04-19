@@ -1,12 +1,5 @@
 function AcertoList({acerto}) {
-    function filtro(acerto){
-        if (acerto !== ""){
-            return false
-        }
-        else{
-            return true
-        }
-    }
+
     return (
       <ul style={{
         display: 'flex',

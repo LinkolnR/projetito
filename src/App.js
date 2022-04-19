@@ -14,7 +14,7 @@ export default function SelectVariants() {
   const [caracteristicaInput, setCaracteristicaInput] = useState('');
   const [sorteadoCarac, setSorteado] = useState('');
   const [sorteadoCaracTodo, setSorteadoTodo] = useState({});
-  const [tentativa,setTentativa] = useState('');
+  const [tentativa,_] = useState('');
   const [errado, setErrado] = useState([])
   const [certo, setCerto] = useState([])
   const [certoSimples, setCertoSimple] = useState([])
