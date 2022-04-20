@@ -8,10 +8,11 @@ import TitlebarImageList from "./imagen";
 import AcertoList from "./acertoList";
 import ErroList from "./erroList";
 import ChuteInput from "./ChuteInput";
+import ListaPossivel from "./listaPossivel";
 
 export default function SelectVariants() {
   const [caracInput, setCaracInput] = useState('');
-  const [caracteristicaInput, setCaracteristicaInput] = useState('');
+  const [caracteristicaInput, setCaracteristicaInput] = useState('característica');
   const [sorteadoCarac, setSorteado] = useState('');
   const [sorteadoCaracTodo, setSorteadoTodo] = useState({});
   const [tentativa,_] = useState('');
@@ -21,8 +22,15 @@ export default function SelectVariants() {
   const [erradoSimples, setErradoSimple] = useState([])
   const [chuteInput , setChuteInput ] = useState('') 
   const personagens = require('./genshin.json')
+  const cidades = ['mondstad','liyue','inazuma']
+  const corCabelo = ['branco','vermelho','azul','verde','marrom','roxo','preto','laranja','rosa']
+  const elemento = ['electro','cryo','pyro','anemo','geo','hydro']
+  const eletrelasTeste = ['4','5']
+  const arma = ['lanca','arco','catalisador','espada','espadao']
+
   const handleChange = (e) => {
     setCaracteristicaInput(e.target.value); 
+    console.log(caracteristicaInput)
   };
 
   const handleCaracInputOnChange = e => {
@@ -51,6 +59,8 @@ export default function SelectVariants() {
       return alert("VOCÊ PERDEU!!! :(")
     }
   }
+
+ 
 
 
 
@@ -155,7 +165,6 @@ export default function SelectVariants() {
     setCaracInput('')
   }
 
-
   return (
     <div style={{ 
       display: 'flex',
@@ -189,6 +198,7 @@ export default function SelectVariants() {
               value={caracInput}
               onChange={handleChange}
               label="Característica"
+              placeholder="Característica"
             >
               <MenuItem value={'cabelo'}>Cabelo</MenuItem>
               <MenuItem value={'elemento'}>Elemento</MenuItem>
@@ -247,7 +257,6 @@ export default function SelectVariants() {
             </ChuteInput>
             </section>
 
-            <h2>{sorteadoCarac}</h2>
 
         </div>
       </div>
@@ -265,7 +274,57 @@ export default function SelectVariants() {
 
         </TitlebarImageList>
       </div>
-    </div>
+      <div style={{
+        display: "flex",
+        justifyContent: "start",
+        flexDirection: "column",
+      }}>
+        Cidades:
+        <ListaPossivel
+        erros={erradoSimples}
+        certos={certoSimples}
+        possiveis = {cidades}
+        >
+        </ListaPossivel>
+        Elementos:
+        <ListaPossivel
+        erros={erradoSimples}
+        certos={certoSimples}
+        possiveis = {elemento}
+        >
+        </ListaPossivel>
+        estrelas:
+        <ListaPossivel
+        erros={erradoSimples}
+        certos={certoSimples}
+        possiveis = {eletrelasTeste}
+        >
+        </ListaPossivel>
+
+      </div>
+      <div style={{
+        display: "flex",
+        justifyContent: "start",
+        flexDirection: "column",
+        marginLeft: "3rem",
+      }}>
+        Cor do Cabelo:
+        <ListaPossivel
+        erros={erradoSimples}
+        certos={certoSimples}
+        possiveis = {corCabelo}
+        >
+        </ListaPossivel>
+        Arma:
+        <ListaPossivel
+        erros={erradoSimples}
+        certos={certoSimples}
+        possiveis = {arma}
+        >
+        </ListaPossivel>
+
+      </div>
+      </div>
   );
 }
 
